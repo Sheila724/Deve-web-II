@@ -1,0 +1,92 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white
+    
+}
+
+.titulo-sombreado {
+    padding: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white
+    
+}
+
+#app {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.personagem {
+    background-color: #000108;
+    border: 2px solid #f1f2f3;
+    border-radius: 10px;
+    margin-bottom: 2px;
+    padding: 10px;
+    width: 180px;
+}
+
+.barra-vida {
+    background-color: #45db4a; /* Cor da barra de vida */
+    height: 20px; /* Altura da barra de vida */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 5px; /* Espaçamento inferior */
+}
+
+.sprite img {
+    width: 85%; /* Ajusta a largura da imagem para ocupar toda a largura da div */
+    height: auto; /* Altura ajustada automaticamente para manter a proporção */
+    border-radius: 15px;
+}
+
+
+.acoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+button {
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f80404;
+    color: whitesmoke;
+    cursor: pointer;
+    transition: background-color 0.5s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #991313;
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(0px);
+}
+
+.barra-vida {
+    height: 32px;
+    background-color: #15eb1c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+
+.sprite {
+    height: 130px;
+    background-color: #030303;
+    
+}
+
+
