@@ -55,7 +55,7 @@ npm run dev
 
 **Contato**
 
-Para qualquer dúvida ou sugestão, entre em contato.
+Para qualquer dúvida ou sugestão, entre em contato pelo email: sheila.araujo486@gmail.com
 
 **Prepare-se para um duelo épico!**
 
