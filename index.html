@@ -21,12 +21,12 @@
                 <button @click="atacar(true)">Atacar</button>
                 <button @click="defender(true)">Defender</button>
                 <button @click="usarPocao(true)">Usar Poção</button>
-                <button @click="critico(true)">Critico</button>
+                <button @click="critico(true)">Especial</button>
             </div>
         </div>
 
         <div class="personagem">
-            <h1 class="diarioBatalha">Diario de Batalha</h1>
+            <h1 class="diarioBatalha">Diário de Batalha</h1>
             <p v-for="(mensagem, index) in log" :key="index" class="mensagem">{{ mensagem }}</p>
         </div>
 

@@ -169,6 +169,10 @@ createApp({
                         this.log.push("Dynamis defendeu o CRITICO!")
                         this.heroi.escudo = false
                     }
+
+
+
+
                 }
                 this.vitoriaHeroi()
             }
