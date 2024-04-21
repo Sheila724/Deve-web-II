@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Prova - Herói e Vilão</title>
@@ -8,24 +8,40 @@
 </head>
 <body>
 <div id="app">
-    <div class="personagem" >
-        <div class="barra-vida" :style="{width: heroi.vida + '%'}">{{ heroi.vida }}</div>
-        <div class="sprite"><img src="img/Herói.png" alt=""></div>
-        <h1 class="titulo-sombreado">Dynamis</h1>
-        <div class="acoes">
-            <button @click="atacar(true)">Atacar</button>
-            <button @click="defender(true)">Defender</button>
-            <button @click="usarPocao(true)">Usar Poção</button>
-            <button @click="correr(true)">Correr</button>
+    <div class="container">
+        <div class="personagem">
+            <div :class="['barra-vida', { 'baixa-vida': heroi.vida <= 30, 'media-vida': heroi.vida > 30 && heroi.vida <= 70, 'alta-vida': heroi.vida > 70 }]" :style="{width: heroi.vida + '%'}">{{ heroi.vida }}</div>
+            <div class="sprite_heroi"><img src="/img/Herói.png" alt="heroi"></div>
+            <h1>Dynamis</h1>
+            <p :class="{ 'critico': true,  'critico_zerado': heroi.critico <= 0 }">Critico: {{ heroi.critico }}</p>
+            <p :class="{ 'escudo': true,  'escudo_zerado': heroi.defender <= 0 }">Escudo: {{ heroi.defender }}
+            <p :class="{ 'escudo': true, 'defesa_inativa': heroi.escudo === false, 'defesa_ativa': heroi.escudo === true }">Status Escudo: {{ heroi.escudo ? 'Ativo' : 'Inativo' }}</p>
+            <p :class="{ 'pocao': true,  'pocao': heroi.pocao <= 0 }">Poção: {{ heroi.pocao }}</p>
+            <div class="acoes">
+                <button @click="atacar(true)">Atacar</button>
+                <button @click="defender(true)">Defender</button>
+                <button @click="usarPocao(true)">Usar Poção</button>
+                <button @click="critico(true)">Critico</button>
+            </div>
         </div>
-    </div>
-    <div class="personagem" >
-        <div class="barra-vida" :style="{width: vilao.vida + '%'}">{{ vilao.vida }}</div>
-        <div class="sprite"><img src="img/Vilão.png" alt=""></div>
-        <h1 class="titulo-sombreado">Erinys</h1>
+
+        <div class="personagem">
+            <h1 class="diarioBatalha">Diario de Batalha</h1>
+            <p v-for="(mensagem, index) in log" :key="index" class="mensagem">{{ mensagem }}</p>
+        </div>
+
+        <div class="personagem" >
+            <div :class="['barra-vida', { 'baixa-vida': vilao.vida <= 30, 'media-vida': vilao.vida > 30 && vilao.vida <= 70, 'alta-vida': vilao.vida > 70 }]" :style="{width: vilao.vida + '%'}">{{ vilao.vida }}</div>
+            <div class="sprite_vilao"><img src="/img/Vilão.png" alt="vilao"></div>
+            <h1>Erinys</h1>
+            <button @click="resetGame()" :class="{ 'botao_invisivel': mostrarBotao, 'botao_visivel': !mostrarBotao }">Reiniciar Jogo</button>
+        </div>
+
+        
     </div>
 </div>
+
+<script src="index.js"></script>
 </body>
 </html>
 
-<script src="index.js"></script>

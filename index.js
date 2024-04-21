@@ -1,147 +1,225 @@
-const { createApp } = Vue;
+const { createApp } = Vue
 
-class Personagem {
-    constructor(nome, vida, forca) {
-        this.nome = nome;
-        this._vida = vida;
-        this.forca = forca;
-    }
-
-    atacar(alvo) {
-        alvo.receberDano(this.forca);
-    }
-
-    receberDano(dano) {
-        this._vida -= dano;
-        if (this._vida < 0) {
-            this._vida = 0;
-        } else if (this._vida > 100) {
-            this._vida = 100;
-        }
-    }
-
-    get vida() {
-        return this._vida;
-    }
-
-    get vidaPercentual() {
-        return (this._vida / 100) * 100;
-    }
-}
-
-class Heroi extends Personagem {
-    constructor(nome, vida, forca, habilidade) {
-        super(nome, vida, forca);
-        this.habilidade = habilidade;
-    }
-
-    usarHabilidade(alvo) {
-        alvo.receberDano(this.forca * 2);
-    }
-
-    defender() {
-        this._vida += 0;
-        if (this._vida > 100) {
-            this._vida = 100;
-        }
-    }
-
-    usarPocao() {
-        this._vida += 5;
-        if (this._vida > 100) {
-            this._vida = 100;
-        }
-    }
-
-    correr() {
-        this._vida -= 10;
-        if (this._vida < 0) {
-            this._vida = 0;
-        }
-    }
-}
-
-class Vilao extends Personagem {
-    constructor(nome, vida, forca, fraqueza) {
-        super(nome, vida, forca);
-        this.fraqueza = fraqueza;
-        this.intervaloAtaque = null;
-        this.iniciarAtaqueAutomatico();
-    }
-
-    iniciarAtaqueAutomatico() {
-        this.intervaloAtaque = setInterval(() => {
-            if (this.vida > 0 && app.heroi.vida > 0) {
-                this.atacarAutomaticamente();
-            } else {
-                clearInterval(this.intervaloAtaque);
-            }
-        }, 2500);
-    }
-
-    atacarAutomaticamente() {
-        const alvo = app.heroi;
-        this.atacar(alvo);
-    }
-
-    explorarFraqueza(alvo) {
-        alvo.receberDano(this.forca * 3);
-    }
-
-    usarHabilidade(alvo) {
-        alvo.receberDano(this.forca * 2);
-    }
-}        
-
-const app = createApp({
+createApp({
     data() {
         return {
-            heroi: new Heroi("Super-Herói", 100, 10, "Super Força"),
-            vilao: new Vilao("Super-Vilão", 100, 8, "Luz Solar"),
-            logHeroi: [],
-            logVilao: []
-        };
+            heroi: { vida: 100, pocao: 3, critico: 3, escudo: false, defender: 3 },
+            vilao: { vida: 100, vidaAnteriorVilao: 100, critico: 0 },
+            game: { ativo: false },
+            log: [],
+            mostrarBotao: false
+
+        }
     },
     methods: {
         atacar(isHeroi) {
-            if (isHeroi) {
-                this.heroi.atacar(this.vilao);
-                this.logHeroi.push(`${this.heroi.nome} atacou ${this.vilao.nome}`);
-            } else {
-                this.vilao.atacar(this.heroi);
-                this.logVilao.push(`${this.vilao.nome} atacou ${this.heroi.nome}`);
+            if (!this.game.ativo) {
+                if (isHeroi) {
+                    this.acaoVilao();
+                    this.vilao.vidaAnteriorVilao = this.vilao.vida
+                    this.log.push("Dynamis atacou!")
+                    this.vilao.vida -= 8
+
+
+
+
+
+                } else {
+                    if (this.heroi.escudo == false) {
+                        this.log.push("Erinys atacou!")
+                        this.heroi.vida -= 20
+                    }
+                    else if (this.heroi.escudo == true) {
+                        this.log.push("Erinys atacou")
+                        this.log.push("Dynamis defendeu o ataque! ")
+                        this.heroi.escudo = false
+                    }
+
+
+
+
+
+
+                }
+                this.vitoriaHeroi()
+            }
+            this.limpandoLog()
+        },
+
+
+        defender(isHeroi) {
+            if (!this.game.ativo) {
+                if (isHeroi) {
+
+                    if (this.heroi.defender > 0) {
+                        this.heroi.defender -= 1
+                        this.heroi.escudo = true
+                        this.log.push("Dynamis se prepara para bloquear o ataque do vilão")
+                        this.acaoVilao()
+                    }
+                    else if (this.heroi.defender <= 0) {
+                        this.log.push("Dynamis não tem mais escudo!")
+                        this.acaoVilao()
+                    }
+
+
+
+
+
+
+                } else {
+
+                    this.vilao.vida = this.vilao.vidaAnteriorVilao
+                    this.log.push("Erinys defendeu!")
+
+
+                }
+                this.vitoriaHeroi()
+            }
+            this.limpandoLog()
+        },
+
+
+        usarPocao(isHeroi) {
+            if (!this.game.ativo) {
+                if (isHeroi) {
+
+                    if (this.heroi.pocao > 0 & this.heroi.vida < 85) {
+                        this.heroi.pocao -= 1
+                        this.heroi.vida += 15
+
+                        this.log.push("Dynamis utilizou uma poção, recuperando 15 pontos de vida.")
+                        this.acaoVilao();
+
+
+
+                    }
+
+
+
+                    else if (this.heroi.pocao > 3) {
+                        this.log.push("Impossível se curar, Dynamis utilizou todas as poções!")
+                        this.acaoVilao()
+
+                    }
+
+                    else if (this.heroi.vida > 85) {
+                        this.log.push("É impossível Dynamis se curar com a vida acima de 85%!")
+                        this.acaoVilao()
+
+                    }
+
+
+                } else {
+
+                    if (this.vilao.vida < 85) {
+                        this.vilao.vida += 5
+                        this.log.push("Erinys utilizou uma poção, recuperando 5 pontos de vida!")
+
+
+                    }
+
+                    else {
+                        this.log.push("É impossível Erinys se curar com a vida acima de 85%!")
+
+                    }
+
+
+                }
+                this.vitoriaHeroi()
+
+            }
+            this.limpandoLog()
+        },
+
+
+        critico(isHeroi) {
+            if (!this.game.ativo) {
+                if (isHeroi) {
+
+                    if (this.heroi.critico > 0) {
+                        this.heroi.critico -= 1
+                        this.vilao.vidaAnteriorVilao = this.vilao.vida
+                        this.log.push("Dynamis conseguiu um acerto crítico!!!")
+                        this.vilao.vida -= 24
+                        this.acaoVilao();
+                        if (this.vilao.vida <= 0) {
+                            this.vilao.vida = 0
+
+                        }
+
+                    }
+                    else {
+
+                        this.log.push("Dynamis não possui mais chance de crítico!.")
+                        this.acaoVilao();
+
+                    }
+
+
+                } else {
+
+                    if (this.heroi.escudo == false) {
+                        this.log.push("Erinys ATACOU!!")
+                        this.heroi.vida -= 30
+
+                    }
+                    else if (this.heroi.escudo == true) {
+                        this.log.push("Erinys ATACOU!!")
+                        this.log.push("Dynamis defendeu o CRITICO!")
+                        this.heroi.escudo = false
+                    }
+                }
+                this.vitoriaHeroi()
+            }
+            this.limpandoLog()
+        },
+
+
+        acaoVilao() {
+            setTimeout(() => {
+                const acoes = ['atacar', 'defender', 'usarPocao', 'critico'];
+                const acaoAleatoria = acoes[Math.floor(Math.random() * acoes.length)];
+                this[acaoAleatoria](false);
+                this.vitoriaVilao()
+            }, 1400)
+
+
+        },
+        vitoriaHeroi() {
+
+            if (this.vilao.vida <= 0) {
+                this.vilao.vida = 0
+                this.game.ativo = true
+                this.mostrarBotao = true
+                setTimeout(() => { alert('Dynamis GANHOU!!') }, 500)
+                
+            
             }
         },
-        usarHabilidade() {
-            this.heroi.usarHabilidade(this.vilao);
-            this.logHeroi.push(`${this.heroi.nome} usou habilidade ${this.heroi.habilidade}`);
+        vitoriaVilao() {
+            if (this.heroi.vida <= 0) {
+
+                this.heroi.vida = 0
+                this.game.ativo = true
+                this.mostrarBotao = true
+
+                setTimeout(() => { alert('Erinys GANHOU HAHAHAHAHAHAHA') }, 500)
+
+            }
         },
-        explorarFraqueza() {
-            this.vilao.explorarFraqueza(this.heroi);
-            this.logVilao.push(`${this.vilao.nome} explorou fraqueza: ${this.vilao.fraqueza}`);
+        limpandoLog() {
+            if (this.log.length > 6) {
+                this.log.shift();
+            }
         },
-        defender() {
-            this.heroi.defender();
-            this.logHeroi.push(`${this.heroi.nome} defendeu`);
-        },
-        usarPocao() {
-            this.heroi.usarPocao();
-            this.logHeroi.push(`${this.heroi.nome} usou poção`);
-        },
-        correr() {
-            this.heroi.correr();
-            this.logHeroi.push(`${this.heroi.nome} correu`);
-            this.reiniciarPartida();
-        },
-        usarHabilidadeVilao() {
-            this.vilao.usarHabilidade(this.heroi);
-            this.logVilao.push(`${this.vilao.nome} usou habilidade ${this.vilao.habilidade}`);
-        },
-        reiniciarPartida() {
-            this.heroi = new Heroi("Super-Herói", 100, 10, "Super Força");
-            this.vilao = new Vilao("Super-Vilão", 100, 8, "Luz Solar");
-            this.logHeroi = [];
-            this.logVilao = [];
+
+        resetGame() {
+            this.heroi = { vida: 100, pocao: 3, critico: 3, escudo: false, defender: 3 };
+            this.vilao = { vida: 100, vidaAnteriorVilao: 100, critico: 0 };
+            this.game.ativo = false;
+            this.log = [];
+            this.mostrarBotao = false
         }
-    }  
+    }
 }).mount("#app");
