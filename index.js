@@ -3,8 +3,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            heroi: { vida: 100, pocao: 3, critico: 3, escudo: false, defender: 3 },
-            vilao: { vida: 100, vidaAnteriorVilao: 100, critico: 0 },
+            heroi: { vida: 100, pocao: 3, especial: 3, escudo: false, defender: 3 },
+            vilao: { vida: 100, vidaAnteriorVilao: 100, especial: 0 },
             game: { ativo: false },
             log: [],
             mostrarBotao: false
@@ -137,10 +137,10 @@ createApp({
             if (!this.game.ativo) {
                 if (isHeroi) {
 
-                    if (this.heroi.critico > 0) {
-                        this.heroi.critico -= 1
+                    if (this.heroi.especial > 0) {
+                        this.heroi.especial -= 1
                         this.vilao.vidaAnteriorVilao = this.vilao.vida
-                        this.log.push("Dynamis conseguiu um acerto crítico!!!")
+                        this.log.push("Dynamis conseguiu um acertou um ataque especial, e deu um dano critico!!!")
                         this.vilao.vida -= 24
                         this.acaoVilao();
                         if (this.vilao.vida <= 0) {
@@ -151,7 +151,7 @@ createApp({
                     }
                     else {
 
-                        this.log.push("Dynamis não possui mais chance de crítico!.")
+                        this.log.push("Dynamis não possui mais chance de ataque especial!.")
                         this.acaoVilao();
 
                     }
@@ -160,13 +160,13 @@ createApp({
                 } else {
 
                     if (this.heroi.escudo == false) {
-                        this.log.push("Erinys ATACOU!!")
+                        this.log.push("Erinys ESPECIAL!!")
                         this.heroi.vida -= 30
 
                     }
                     else if (this.heroi.escudo == true) {
-                        this.log.push("Erinys ATACOU!!")
-                        this.log.push("Dynamis defendeu o CRITICO!")
+                        this.log.push("Erinys ESPECIAL!!")
+                        this.log.push("Dynamis defendeu o ATAQUE ESPECIAL!")
                         this.heroi.escudo = false
                     }
 
@@ -219,8 +219,8 @@ createApp({
         },
 
         resetGame() {
-            this.heroi = { vida: 100, pocao: 3, critico: 3, escudo: false, defender: 3 };
-            this.vilao = { vida: 100, vidaAnteriorVilao: 100, critico: 0 };
+            this.heroi = { vida: 100, pocao: 3, especial: 3, escudo: false, defender: 3 };
+            this.vilao = { vida: 100, vidaAnteriorVilao: 100, especial: 0 };
             this.game.ativo = false;
             this.log = [];
             this.mostrarBotao = false

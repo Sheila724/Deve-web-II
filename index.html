@@ -13,7 +13,7 @@
             <div :class="['barra-vida', { 'baixa-vida': heroi.vida <= 30, 'media-vida': heroi.vida > 30 && heroi.vida <= 70, 'alta-vida': heroi.vida > 70 }]" :style="{width: heroi.vida + '%'}">{{ heroi.vida }}</div>
             <div class="sprite_heroi"><img src="/img/Herói.png" alt="heroi"></div>
             <h1>Dynamis</h1>
-            <p :class="{ 'critico': true,  'critico_zerado': heroi.critico <= 0 }">Critico: {{ heroi.critico }}</p>
+            <p :class="{ 'especial': true,  'especial_zerado': heroi.especial <= 0 }">Especial: {{ heroi.especial }}</p>
             <p :class="{ 'escudo': true,  'escudo_zerado': heroi.defender <= 0 }">Escudo: {{ heroi.defender }}
             <p :class="{ 'escudo': true, 'defesa_inativa': heroi.escudo === false, 'defesa_ativa': heroi.escudo === true }">Status Escudo: {{ heroi.escudo ? 'Ativo' : 'Inativo' }}</p>
             <p :class="{ 'pocao': true,  'pocao': heroi.pocao <= 0 }">Poção: {{ heroi.pocao }}</p>
