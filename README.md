@@ -6,7 +6,8 @@
 
 * **Dynamis:** A Campeã da Luz, equipada com força bruta e habilidades curativas.
 * **Erinys:** E o Senhor das Sombras, manipulador de ilusões e mestre da magia negra.
-![image](https://github.com/Sheila724/Deve-web-II/assets/135647046/4390185b-73a2-40a8-b96c-353a1aa17997)
+![image](https://github.com/Sheila724/Deve-web-II/assets/135647046/c99389c2-3b0b-4285-aacd-64b88b710751)
+
 
 
 **Requisitos para a Batalha**
@@ -54,7 +55,7 @@ npm run dev
 
 **Contato**
 
-Para qualquer dúvida ou sugestão, entre em contato.
+Para qualquer dúvida ou sugestão, entre em contato pelo email: sheila.araujo486@gmail.com
 
 **Prepare-se para um duelo épico!**
 
