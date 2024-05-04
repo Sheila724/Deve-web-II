@@ -6,7 +6,8 @@
 
 * **Dynamis:** A Campeã da Luz, equipada com força bruta e habilidades curativas.
 * **Erinys:** E o Senhor das Sombras, manipulador de ilusões e mestre da magia negra.
-![image](https://github.com/Sheila724/Deve-web-II/assets/135647046/c99389c2-3b0b-4285-aacd-64b88b710751)
+![image](https://github.com/Sheila724/Deve-web-II/assets/135647046/ed4b32e9-3c26-43d8-9fab-1634ccca2ef0)
+
 
 
 
