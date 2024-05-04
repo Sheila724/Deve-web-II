@@ -8,7 +8,7 @@
 * **Erinys:** E o Senhor das Sombras, manipulador de ilusões e mestre da magia negra.
 ![image](https://github.com/Sheila724/Deve-web-II/assets/135647046/03b14960-5b1a-4048-9ea6-f129dd1fdcaa)
 
-**Paleta de cores criado através do site:
+**Paleta de cores criado através do site:**
 https://color.adobe.com/pt/create/image
 
 **Requisitos para a Batalha**
