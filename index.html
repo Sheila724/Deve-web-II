@@ -1,47 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <title>Prova - Herói e Vilão</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
+
 <body>
-<div id="app">
-    <div class="container">
-        <div class="personagem">
-            <div :class="['barra-vida', { 'baixa-vida': heroi.vida <= 30, 'media-vida': heroi.vida > 30 && heroi.vida <= 70, 'alta-vida': heroi.vida > 70 }]" :style="{width: heroi.vida + '%'}">{{ heroi.vida }}</div>
-            <div class="sprite_heroi"><img src="./img/Heroi definitivo.jpg" alt="heroi"></div>
-            <h1>Dynamis</h1>
-            <p :class="{ 'especial': true,  'especial_zerado': heroi.especial <= 0 }">Especial: {{ heroi.especial }}</p>
-            <p :class="{ 'escudo': true,  'escudo_zerado': heroi.defender <= 0 }">Escudo: {{ heroi.defender }}
-            <p :class="{ 'escudo': true, 'defesa_inativa': heroi.escudo === false, 'defesa_ativa': heroi.escudo === true }">Status Escudo: {{ heroi.escudo ? 'Ativo' : 'Inativo' }}</p>
-            <p :class="{ 'pocao': true,  'pocao': heroi.pocao <= 0 }">Poção: {{ heroi.pocao }}</p>
-            <div class="acoes">
-                <button @click="atacar(true)">Atacar</button>
-                <button @click="defender(true)">Defender</button>
-                <button @click="usarPocao(true)">Usar Poção</button>
-                <button @click="Especial(true)">Especial</button>
+    <div id="app">
+        <div class="container">
+            <div class="container">
+                <div class="personagem">
+                    <div :class="['barra-vida', { 'baixa-vida': heroi.vida <= 30, 'media-vida': heroi.vida > 30 && heroi.vida <= 70, 'alta-vida': heroi.vida > 70 }]"
+                        :style="{width: heroi.vida + '%'}">{{ heroi.vida }}</div>
+                    <div class="sprite_heroi"><img src="./img/Heroi definitivo.jpg" alt="heroi"></div>
+                    <h1>Dynamis</h1>
+                    <p :class="{ 'especial': true,  'especial_zerado': heroi.especial <= 0 }">Especial: {{
+                        heroi.especial }}</p>
+                    <p :class="{ 'escudo': true,  'escudo_zerado': heroi.defender <= 0 }">Escudo: {{ heroi.defender }}
+                    </p>
+                    <p
+                        :class="{ 'escudo': true, 'defesa_inativa': heroi.escudo === false, 'defesa_ativa': heroi.escudo === true }">
+                        Status Escudo: {{ heroi.escudo ? 'Ativo' : 'Inativo' }}</p>
+                    <p :class="{ 'pocao': true,  'pocao': heroi.pocao <= 0 }">Poção: {{ heroi.pocao }}</p>
+                    <div class="acoes">
+                        <button @click="atacar(true)">Atacar</button>
+                        <button @click="defender(true)">Defender</button>
+                        <button @click="usarPocao(true)">Usar Poção</button>
+                        <button @click="especial(true)">Especial</button>
+                    </div>
+                </div>
+
+                <div class="personagem">
+                    <h1 class="diarioBatalha">Diário de Batalha</h1>
+                    <p v-for="(mensagem, index) in log" :key="index" class="mensagem">{{ mensagem }}</p>
+                </div>
+
+                <div class="personagem">
+                    <div :class="['barra-vida', { 'baixa-vida': vilao.vida <= 30, 'media-vida': vilao.vida > 30 && vilao.vida <= 70, 'alta-vida': vilao.vida > 70 }]"
+                        :style="{width: vilao.vida + '%'}">{{ vilao.vida }}</div>
+                    <div class="sprite_vilao"><img src="./img/Vilão definitivo.jpg" alt="vilao"></div>
+                    <h1>Erinys</h1>
+                    <button @click="resetGame()"
+                        :class="{ 'botao_invisivel': mostrarBotao, 'botao_visivel': !mostrarBotao }">Reiniciar
+                        Jogo</button>
+                </div>
+
+
             </div>
         </div>
 
-        <div class="personagem">
-            <h1 class="diarioBatalha">Diário de Batalha</h1>
-            <p v-for="(mensagem, index) in log" :key="index" class="mensagem">{{ mensagem }}</p>
-        </div>
-
-        <div class="personagem" >
-            <div :class="['barra-vida', { 'baixa-vida': vilao.vida <= 30, 'media-vida': vilao.vida > 30 && vilao.vida <= 70, 'alta-vida': vilao.vida > 70 }]" :style="{width: vilao.vida + '%'}">{{ vilao.vida }}</div>
-            <div class="sprite_vilao"><img src="./img/Vilão definitivo.jpg" alt="vilao"></div>
-            <h1>Erinys</h1>
-            <button @click="resetGame()" :class="{ 'botao_invisivel': mostrarBotao, 'botao_visivel': !mostrarBotao }">Reiniciar Jogo</button>
-        </div>
-
-        
-    </div>
-</div>
-
-<script src="index.js"></script>
+        <script src="index.js"></script>
 </body>
-</html>
 
+</html>
