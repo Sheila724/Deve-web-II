@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <title>Prova - Herói e Vilão</title>
@@ -11,7 +11,7 @@
     <div class="container">
         <div class="personagem">
             <div :class="['barra-vida', { 'baixa-vida': heroi.vida <= 30, 'media-vida': heroi.vida > 30 && heroi.vida <= 70, 'alta-vida': heroi.vida > 70 }]" :style="{width: heroi.vida + '%'}">{{ heroi.vida }}</div>
-            <div class="sprite_heroi"><img src="/img/Herói.png" alt="heroi"></div>
+            <div class="sprite_heroi"><img src="./img/Heroi definitivo.jpg" alt="heroi"></div>
             <h1>Dynamis</h1>
             <p :class="{ 'especial': true,  'especial_zerado': heroi.especial <= 0 }">Especial: {{ heroi.especial }}</p>
             <p :class="{ 'escudo': true,  'escudo_zerado': heroi.defender <= 0 }">Escudo: {{ heroi.defender }}
@@ -32,7 +32,7 @@
 
         <div class="personagem" >
             <div :class="['barra-vida', { 'baixa-vida': vilao.vida <= 30, 'media-vida': vilao.vida > 30 && vilao.vida <= 70, 'alta-vida': vilao.vida > 70 }]" :style="{width: vilao.vida + '%'}">{{ vilao.vida }}</div>
-            <div class="sprite_vilao"><img src="/img/Vilão.png"" alt="vilao"></div>
+            <div class="sprite_vilao"><img src="./img/Vilão definitivo.jpg" alt="vilao"></div>
             <h1>Erinys</h1>
             <button @click="resetGame()" :class="{ 'botao_invisivel': mostrarBotao, 'botao_visivel': !mostrarBotao }">Reiniciar Jogo</button>
         </div>
