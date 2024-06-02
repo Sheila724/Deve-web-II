@@ -35,7 +35,7 @@ npm install
 ```
 
 **Configurações do Banco de Dados Azure**
-1. Acesse o (https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=4765445b-32c6-49b0-83e6-1d93765276ca&redirect_uri=https%3A%2F%2Fwww.office.com%2Flandingv2&response_type=code%20id_token&scope=openid%20profile%20https%3A%2F%2Fwww.office.com%2Fv2%2FOfficeHome.All&response_mode=form_post&nonce=638529637072009936.MDZiMWUwMzAtM2U3ZS00MWJjLWIyMDktOWUxYjU2NzJjNDdlZTc0NjcyNTktNTlhNi00YzEzLWI4OTYtYzMyMmE0ODk5MjMy&ui_locales=pt-BR&mkt=pt-BR&client-request-id=9b4d9897-537b-478d-8cb8-3f54567e5640&state=H_UrgiNnN6VjXUMEl-KAcuhKyyae23D0kB2Hv1zjLxktcxSeT3buPYkc3pN_1Xuu5dTTJoV2uPZZbjUbo4hFu0QtI37ElY0oWg0Dv2RVIdjAyE7ZY5dMaBw_cyTD58aQa7RwHlFl-rQlV51RphmwfUiPBSkcf08Vuo5PCgEaK2QgYsuYDVCcYdr6wfbBr2JueOJronBYefngSePHCBq3oTwGBQJONRVU0jTUZhJKRa_ODmAy1XX-jS9QJcjVgD0GUxgeEIwACIUUYCJvtQaCkQ&x-client-SKU=ID_NET8_0&x-client-ver=7.3.1.0)
+Neste projeto foi utilizado o Microsoft Azure para a hospedagem do banco de dados(https://azure.microsoft.com/pt-br/free/search/?ef_id=_k_Cj0KCQjwsPCyBhD4ARIsAPaaRf0Z4PNVusbV3ZN77o3dKsidWkeP1OUlMGzl9Nqdc-4P0ofO_5menK0aAm9dEALw_wcB_k_&OCID=AIDcmmzmnb0182_SEM__k_Cj0KCQjwsPCyBhD4ARIsAPaaRf0Z4PNVusbV3ZN77o3dKsidWkeP1OUlMGzl9Nqdc-4P0ofO_5menK0aAm9dEALw_wcB_k_&gad_source=1&gclid=Cj0KCQjwsPCyBhD4ARIsAPaaRf0Z4PNVusbV3ZN77o3dKsidWkeP1OUlMGzl9Nqdc-4P0ofO_5menK0aAm9dEALw_wcB)
 
 **Aprimore suas Habilidades**
 
