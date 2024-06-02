@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Login</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app" class="wrapper">
+    <div class="form-container">
+      <div class="slide-controls">
+        <input type="radio" name="slide" id="login" checked @click="slide('login')">
+        <input type="radio" name="slide" id="signup" @click="slide('signup')">
+        <label for="login" class="slide login">Login</label>
+        <label for="signup" class="slide signup">Cadastre-se</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+        <form action="#" class="login" id="loginForm" ref="loginForm" @submit.prevent="loginFormSubmit">
+          <div class="field">
+            <input type="text" v-model="loginFormEmail" placeholder="Endereço de email" required>
+          </div>
+          <div class="field">
+            <input type="password" v-model="loginFormPassword" placeholder="Senha" required>
+          </div>
+          <div class="error-message" v-if="loginError">{{ loginError }}</div>
+          <div class="pass-link"><a href="#">Esqueceu a senha?</a></div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Login">
+            <input type="#">
+          </div>
+        </form>
+        <form action="#" class="signup" id="signupForm" ref="signupForm" @submit.prevent="signupFormSubmit" style="display: none;">
+          <div class="field">
+            <input type="text" v-model="signupFormName" placeholder="Nome" required>
+          </div>
+          <div class="field">
+            <input type="email" v-model="signupFormEmail" placeholder="Endereço de email" required>
+          </div>
+          <div class="field">
+            <input type="password" v-model="signupFormPassword" placeholder="Senha" required>
+            <span v-if="signupFormPassword.length < 6">A senha deve ter pelo menos 6 caracteres.</span>
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Confirme a Senha" required>
+          </div>
+          <div class="success-message" v-if="signupSuccess">{{ signupSuccessMessage }}</div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Cadastrar">
+            <input type="redirectToLogin" value="Faça Login">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>
+

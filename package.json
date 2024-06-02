@@ -1,0 +1,21 @@
+{
+  "name": "deve-web-ii",
+  "version": "1.0.0",
+  "description": "**Prepare-se para um duelo entre a heróina Dynamis e o vilão Erinys neste jogo de cartas desenvolvido com Vue.js, HTML e CSS!**",
+  "main": "login.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mssql": "^10.0.2",
+    "sql": "^0.78.0",
+    "vue": "^3.4.21"
+  }
+}
