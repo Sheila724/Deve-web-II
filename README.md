@@ -1,6 +1,6 @@
-## Leia-me: Duelo Épico entre Dynamis e Erinys em Vue.js
+## Leia-me: Jogo de um Duelo Épico entre Dynamis e Erinys em Vue.js e conta com o Banco de Dados Azure
 
-**Prepare-se para um duelo entre a heróina Dynamis e o vilão Erinys neste jogo de cartas desenvolvido com Vue.js, HTML e CSS!**
+**Prepare-se para um duelo entre a heróina Dynamis e o vilão Erinys neste jogo de cartas desenvolvido com Vue.js, HTML e CSS, e que está com o seu bando de dados hospedado na plataforma Microsoft Azure.**
 
 **Domine os Poderes**
 
@@ -21,33 +21,21 @@ https://color.adobe.com/pt/create/image
 1. Clone o repositório do jogo:
 
 ```bash
-git clone https://github.com/t3l3machus/Villain/blob/main/Villain.py
+git clone git clone https://github.com/Sheila724/Deve-web-II
 ```
 
-2. Acesse o diretório do projeto:
-
-```bash
-cd hero-villain-card-game
-```
-
-3. Instale as dependências do projeto:
+2. Instale as dependências do projeto:
 
 ```bash
 npm install
 ```
 
-4. Inicie o jogo:
-
 ```bash
-npm run dev
+npm install
 ```
 
-5. Acesse o URL exibido no terminal.
-
-**Comande seus Heróis**
-
-* Escolha entre as opções da carta da heróina
-* O primeiro jogador a reduzir a vida do oponente a zero vence o duelo!
+**Configurações do Banco de Dados Azure**
+Neste projeto foi utilizado o Microsoft Azure para a hospedagem do banco de dados(https://azure.microsoft.com/pt-br/free/search/?ef_id=_k_Cj0KCQjwsPCyBhD4ARIsAPaaRf0Z4PNVusbV3ZN77o3dKsidWkeP1OUlMGzl9Nqdc-4P0ofO_5menK0aAm9dEALw_wcB_k_&OCID=AIDcmmzmnb0182_SEM__k_Cj0KCQjwsPCyBhD4ARIsAPaaRf0Z4PNVusbV3ZN77o3dKsidWkeP1OUlMGzl9Nqdc-4P0ofO_5menK0aAm9dEALw_wcB_k_&gad_source=1&gclid=Cj0KCQjwsPCyBhD4ARIsAPaaRf0Z4PNVusbV3ZN77o3dKsidWkeP1OUlMGzl9Nqdc-4P0ofO_5menK0aAm9dEALw_wcB)
 
 **Aprimore suas Habilidades**
 
